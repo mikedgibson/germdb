@@ -1,0 +1,9 @@
+{% if latest_malware_list %}
+    <ul>
+    {% for malware in latest_malware_list %}
+        <li><a href="{% url 'detail' malware.id %}">{{ malware.sha256 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No recent malware available.</p>
+{% endif %}
