@@ -33,5 +33,5 @@ Please open issues on [Github] (https://github.com/mikedgibson/germdb/) on topic
 
 Contact details
 
-[Twitter](https://twitter.com/mdgsecurity)
-[email](mailto:mike@mdgsecurity.com).
+Twitter - [@mdgsecurity](https://twitter.com/mdgsecurity)
+Email - [mike@mdgsecurity.com](mailto:mike@mdgsecurity.com)
