@@ -1,0 +1,23 @@
+{% if malware %}
+"id" : {{ malware.id }}<BR>
+"file_name" : {{ malware.file_name }}<BR>
+"orig_url" : {{ malware.orig_url }}<BR>
+"file_type" : {{ malware.file_type }}<BR>
+"file_size" : {{ malware..file_size }}<BR>
+"md5" : {{ malware.md5 }}<BR>
+"sha1" : {{ malware.sha1 }}<BR>
+"sha256" : {{ malware.sha256 }}<BR>
+"sha512" : {{ malware.sha512 }}<BR>
+"crc32" : {{ malware.crc32 }]<BR>
+"ssdeep": {{ malware.ssdeep }}<BR>
+"created_at": {{ malware.created_at }}<BR>
+"modified_at": {{ malware.modified_at }}<BR>
+{% for tag in malware.tag.all %}
+"tag" : {{ tag.tag }}<BR>
+{% empty %}
+"tag" : "None"<BR>
+{% endfor %}
+{% else %}
+    <p>No details available.</p>
+{% endif %}
+

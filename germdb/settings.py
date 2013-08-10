@@ -1,11 +1,11 @@
 # Django settings for germdb project.
 
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-BASEPATH = '/kunden/homepages/11/d121690719/htdocs'
-MALWARE_ROOT = BASEPATH + '/www/germdb.mdgsecurity.com/malware'
+BASEPATH = '/srv'
+MALWARE_ROOT = BASEPATH + '/germdb/nginx/malware'
 MALWARE_URL = '/malware'
 STORE_ENCODED = True
 
@@ -19,12 +19,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db473125977',                      # Or path to database file if using sqlite3.
-        'USER': 'dbo473125977',                      # Not used with sqlite3.
-        'PASSWORD': 'Apple1995!',                  # Not used with sqlite3.
-        'HOST': 'db473125977.db.1and1.com',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'germdb',                      # Or path to database file if using sqlite3.
+        'USER': 'postgres',                      # Not used with sqlite3.
+        'PASSWORD': 'postgres',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -67,7 +67,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = BASEPATH + '/www/germdb.mdgsecurity.com/static'
+STATIC_ROOT = BASEPATH + '/nginx/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"

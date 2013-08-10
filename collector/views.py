@@ -68,9 +68,9 @@ def detail(request, id):
 
 #            return entry
 
-        latest_malware_list = malware.objects.all().order_by('-created_at')[:5]
-        context = {'latest_malware_list' : latest_malware_list}
-        return render(request, 'collector/index.html', context)
+        malware_detail = malware.objects.get(pk=id)
+        context = {'malware' : malware_detail}
+        return render(request, 'collector/detail.html', context)
 
 #        results = []
 #        for row in latest_malware_list:
