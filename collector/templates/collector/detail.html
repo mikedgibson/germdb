@@ -17,7 +17,7 @@
         <link rel="apple-touch-icon-precomposed" href="{% static "collector/img/touch-icon.57.png" %}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "collector/img/touch-icon.72.png" %}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "collector/img/touch-icon.114.png" %}">
-        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.320x460.png"
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.320x460.png" %}"
         media="screen and (min-device-width: 200px) and (max-device-width: 320px) and (orientation:portrait)">
         <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.768x1004.png"
         media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
@@ -65,55 +65,55 @@
     
     <body>
         <div class="ink-grid">
-            <header>
-                <h1>GermDB Malware Info<small>{{ malware.id }}</small></h1>
+            <header class="vspace">
+                <h1>GermDB Malware Details<small>{{ malware.id }}</small></h1>
             </header>
                 <form action="">
                     <fieldset>
 			<div class="control-group">
 				<label for="file-name" class="large-10">Filename</label>
 				<div class="control">
-					<input class="large-90" id="file-name" type="text" placeholder="{{ malware.file_name }}">
+					<input class="large-90" id="file-name" type="text" value="{{ malware.file_name }}">
 				</div>
 				<label for="orig-url" class="large-10">URL</label>
 				<div class="control">
-					<input class="large-90" id="orig-url" type="text" placeholder="{{ malware.orig_url }}">
+					<input class="large-90" id="orig-url" type="text" value="{{ malware.orig_url }}">
 				</div>
 				<label for="file-name" class="large-10">File Type</label>
 				<div class="control">
-					<input class="large-90" id="file-type" type="text" placeholder="{{ malware.file_type }}">
+					<input class="large-90" id="file-type" type="text" value="{{ malware.file_type }}">
 				</div>
 				<label for="orig-url" class="large-10">File Size</label>
 				<div class="control">
-					<input class="large-90" id="file-size" type="text" placeholder="{{ malware.file_size|filesizeformat }}">
+					<input class="large-90" id="file-size" type="text" value="{{ malware.file_size|filesizeformat }}">
 				</div>
 				<label for="file-name" class="large-10">MD5</label>
 				<div class="control">
-					<input class="large-90" id="md5" type="text" placeholder="{{ malware.md5 }}">
+					<input class="large-90" id="md5" type="text" value="{{ malware.md5 }}">
 				</div>
 				<label for="orig-url" class="large-10">SHA1</label>
 				<div class="control">
-					<input class="large-90" id="sha1" type="text" placeholder="{{ malware.sha1 }}">
+					<input class="large-90" id="sha1" type="text" value="{{ malware.sha1 }}">
 				</div>
 				<label for="file-name" class="large-10">SHA256</label>
 				<div class="control">
-					<input class="large-90" id="sha256" type="text" placeholder="{{ malware.sha256 }}">
+					<input class="large-90" id="sha256" type="text" value="{{ malware.sha256 }}">
 				</div>
 				<label for="orig-url" class="large-10">SHA512</label>
 				<div class="control">
-					<input class="large-90" id="sha512" type="text" placeholder="{{ malware.sha512 }}">
+					<input class="large-90" id="sha512" type="text" value="{{ malware.sha512 }}">
 				</div>
 				<label for="file-name" class="large-10">CRC32</label>
 				<div class="control">
-					<input class="large-90" id="crc32" type="text" placeholder="{{ malware.crc32 }}">
+					<input class="large-90" id="crc32" type="text" value="{{ malware.crc32 }}">
 				</div>
 				<label for="orig-url" class="large-10">Created</label>
 				<div class="control">
-					<input class="large-90" id="created_at" type="text" placeholder="{{ malware.created_at }}">
+					<input class="large-90" id="created_at" type="text" value="{{ malware.created_at }}">
 				</div>
 				<label for="orig-url" class="large-10">Modified</label>
 				<div class="control">
-					<input class="large-90" id="modified_at" type="text" placeholder="{{ malware.modified_at }}">
+					<input class="large-90" id="modified_at" type="text" value="{{ malware.modified_at }}">
 				</div>
 			</div>
                     </fieldset>
@@ -123,12 +123,10 @@
             <div class="ink-grid">
                 <nav class="ink-navigation push-left medium-100 small-100 small-push-left">
                     <ul class="menu horizontal">
-                        <li><a href="#">Footer item</a></li>
-                        <li><a href="#">Footer item</a></li>
-                        <li><a href="#">Footer item</a></li>
+                        <li><a href="/collector/">Back</a></li>
                     </ul>
                 </nav>
-                <p class="push-right small-100">some text</p>
+                <p class="push-right small-100">GermDB</p>
             </div>
         </footer>
     </body>
