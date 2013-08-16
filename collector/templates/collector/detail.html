@@ -1,23 +1,135 @@
-{% if malware %}
-"id" : {{ malware.id }}<BR>
-"file_name" : {{ malware.file_name }}<BR>
-"orig_url" : {{ malware.orig_url }}<BR>
-"file_type" : {{ malware.file_type }}<BR>
-"file_size" : {{ malware..file_size }}<BR>
-"md5" : {{ malware.md5 }}<BR>
-"sha1" : {{ malware.sha1 }}<BR>
-"sha256" : {{ malware.sha256 }}<BR>
-"sha512" : {{ malware.sha512 }}<BR>
-"crc32" : {{ malware.crc32 }]<BR>
-"ssdeep": {{ malware.ssdeep }}<BR>
-"created_at": {{ malware.created_at }}<BR>
-"modified_at": {{ malware.modified_at }}<BR>
-{% for tag in malware.tag.all %}
-"tag" : {{ tag.tag }}<BR>
-{% empty %}
-"tag" : "None"<BR>
-{% endfor %}
-{% else %}
-    <p>No details available.</p>
-{% endif %}
-
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>
+            GermDB - Malware Details
+        </title>
+        <meta name="description" content="">
+        <meta name="author" content="ink, cookbook, recipes">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" href="{% static "collector/img/ink-favicon.ico" %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static "collector/img/touch-icon.57.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "collector/img/touch-icon.72.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "collector/img/touch-icon.114.png" %}">
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.320x460.png"
+        media="screen and (min-device-width: 200px) and (max-device-width: 320px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.768x1004.png"
+        media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.1024x748.png"
+        media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+        <link rel="stylesheet" type="text/css" href="{% static "collector/css/ink.css" %}">
+        
+        <!--[if IE 7 ]>
+            <link rel="stylesheet" href="{% static "collector/css/ink-ie7.css" %}" type="text/css" media="screen" title="no title" charset="utf-8">
+        <![endif]-->
+        
+        <script type="text/javascript" src="{% static "collector/js/holder.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/ink.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/ink-ui.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/autoload.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/html5shiv.js" %}"></script>
+        
+        
+        <style type="text/css">
+            body {
+                background: #ededed;
+            }
+            header {
+                padding: 2em 0;
+                margin-bottom: 2em;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header h1 small:before  {
+                content: "|";
+                margin: 0 0.5em;
+                font-size: 1.6em;
+            }
+            footer {
+                background: #ccc;
+                color: #0003;
+            }
+            footer p {
+                padding: 0.5em 1em 0.5em 0;
+                margin: 0;        
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="ink-grid">
+            <header>
+                <h1>GermDB Malware Info<small>{{ malware.id }}</small></h1>
+            </header>
+                <form action="">
+                    <fieldset>
+			<div class="control-group">
+				<label for="file-name" class="large-10">Filename</label>
+				<div class="control">
+					<input class="large-90" id="file-name" type="text" placeholder="{{ malware.file_name }}">
+				</div>
+				<label for="orig-url" class="large-10">URL</label>
+				<div class="control">
+					<input class="large-90" id="orig-url" type="text" placeholder="{{ malware.orig_url }}">
+				</div>
+				<label for="file-name" class="large-10">File Type</label>
+				<div class="control">
+					<input class="large-90" id="file-type" type="text" placeholder="{{ malware.file_type }}">
+				</div>
+				<label for="orig-url" class="large-10">File Size</label>
+				<div class="control">
+					<input class="large-90" id="file-size" type="text" placeholder="{{ malware.file_size|filesizeformat }}">
+				</div>
+				<label for="file-name" class="large-10">MD5</label>
+				<div class="control">
+					<input class="large-90" id="md5" type="text" placeholder="{{ malware.md5 }}">
+				</div>
+				<label for="orig-url" class="large-10">SHA1</label>
+				<div class="control">
+					<input class="large-90" id="sha1" type="text" placeholder="{{ malware.sha1 }}">
+				</div>
+				<label for="file-name" class="large-10">SHA256</label>
+				<div class="control">
+					<input class="large-90" id="sha256" type="text" placeholder="{{ malware.sha256 }}">
+				</div>
+				<label for="orig-url" class="large-10">SHA512</label>
+				<div class="control">
+					<input class="large-90" id="sha512" type="text" placeholder="{{ malware.sha512 }}">
+				</div>
+				<label for="file-name" class="large-10">CRC32</label>
+				<div class="control">
+					<input class="large-90" id="crc32" type="text" placeholder="{{ malware.crc32 }}">
+				</div>
+				<label for="orig-url" class="large-10">Created</label>
+				<div class="control">
+					<input class="large-90" id="created_at" type="text" placeholder="{{ malware.created_at }}">
+				</div>
+				<label for="orig-url" class="large-10">Modified</label>
+				<div class="control">
+					<input class="large-90" id="modified_at" type="text" placeholder="{{ malware.modified_at }}">
+				</div>
+			</div>
+                    </fieldset>
+                </form>
+        </div>
+        <footer>
+            <div class="ink-grid">
+                <nav class="ink-navigation push-left medium-100 small-100 small-push-left">
+                    <ul class="menu horizontal">
+                        <li><a href="#">Footer item</a></li>
+                        <li><a href="#">Footer item</a></li>
+                        <li><a href="#">Footer item</a></li>
+                    </ul>
+                </nav>
+                <p class="push-right small-100">some text</p>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -5,9 +5,10 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 BASEPATH = '/srv'
-MALWARE_ROOT = BASEPATH + '/germdb/nginx/malware'
+#MALWARE_ROOT = BASEPATH + '/germdb/nginx/malware'
+MALWARE_ROOT = '/usr/share/nginx/www/malware'
 MALWARE_URL = '/malware'
-STORE_ENCODED = True
+STORE_ENCODED = False
 
 ALLOWED_HOSTS = ('.germdb.com', '.mdgsecurity.com')
 
