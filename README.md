@@ -1,7 +1,7 @@
 GermDB
 =========
 
-GermDB originated as a fork of [VxCage] (https://github.com/cuckoobox/vxcage). It is a framework for the creation of a malware repository for research and testing purposes based on the Django web framework. Pieces of the original VxCage code were migrated to run within Django 1.5 and extended.
+GermDB originated as a fork of [VxCage] (https://github.com/cuckoobox/vxcage). It is a framework for the creation of a malware repository for research and testing purposes based on the Django web framework. Pieces of the original VxCage code were migrated to run within Django 1.4.5 and extended.
 
 Currently GermDB is comprised of a single Django application called the Collector which is the interface for adding, searching and retrieveing malware from the respository. Additional applications with be added over time to include functionality for reviewing details of the malware such static analysis, dynamic analysis, etc.
 
@@ -11,7 +11,7 @@ Some improvements to VxCage include:
 
 Dependencies
 ------------
-* [Django] (http://www.djangoproject.com/) version 1.5
+* [Django] (http://www.djangoproject.com/) version 1.4.5+
 
 License
 -------
