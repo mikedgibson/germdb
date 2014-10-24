@@ -5,12 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 BASEPATH = '/srv'
-<<<<<<< HEAD
-MALWARE_ROOT = BASEPATH + '/germdb/www/malware'
-=======
-#MALWARE_ROOT = BASEPATH + '/germdb/nginx/malware'
-MALWARE_ROOT = '/usr/share/nginx/www/malware'
->>>>>>> 1a5c4db6e15be8940ef0b41083442945664df731
+MALWARE_ROOT = BASEPATH + '/www/malware'
 MALWARE_URL = '/malware'
 STORE_ENCODED = False
 
@@ -72,11 +67,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-<<<<<<< HEAD
 STATIC_ROOT = BASEPATH + '/www/static'
-=======
-STATIC_ROOT = BASEPATH + '/nginx/static'
->>>>>>> 1a5c4db6e15be8940ef0b41083442945664df731
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
