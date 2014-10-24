@@ -1,9 +1,77 @@
-{% if latest_malware_list %}
-    <ul>
-    {% for malware in latest_malware_list %}
-        <li><a href="{% url 'detail' malware.id %}">{{ malware.sha256 }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No recent malware available.</p>
-{% endif %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>
+            GermDB
+        </title>
+        <meta name="description" content="">
+        <meta name="author" content="Mike Gibson">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" href="{% static "collector/img/ink-favicon.ico" %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static "collector/img/touch-icon.57.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "collector/img/touch-icon.72.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "collector/img/touch-icon.114.png" %}">
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.320x460.png" %}"
+        media="screen and (min-device-width: 200px) and (max-device-width: 320px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.768x1004.png" %}"
+        media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="{% static "collector/img/splash.1024x748.png" %}"
+        media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+        <link rel="stylesheet" type="text/css" href="{% static "collector/css/ink.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "collector/css/quick-start.css" %}">
+        
+        <!--[if IE 7 ]>
+            <link rel="stylesheet" href="{% static "collector/css/ink-ie7.css" %}" type="text/css" media="screen" title="no title" charset="utf-8">
+        <![endif]-->
+        
+        <script type="text/javascript" src="{% static "collector/js/holder.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/ink.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/ink-ui.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/autoload.js" %}"></script>
+        <script type="text/javascript" src="{% static "collector/js/html5shiv.js" %}"></script>
+
+    </head>
+    
+    <body>        
+        <div class="ink-grid">
+            <header class="vspace">
+                <h1 class="">GermDB</h1>
+                <p>Latest Samples Submitted to GermDB Collector</p>
+            </header>
+                    <table class="ink-table alternating">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+				<th>FILENAME</th>
+                                <th class="hide-small show-medium show-large">SHA256</th>
+				<th>FILESIZE</th>
+                            </tr>
+                        </thead>
+			{% if latest_malware_list %}
+                        	<tfoot>
+	                        	<td colspan="4">SHOWING {{ latest_malware_list|length }} RESULTS</td>
+                       		</tfoot>
+				<tbody>
+				    {% for malware in latest_malware_list %}
+					<tr>
+					    <td><a href="/collector/malware/detail/{{malware.id}}">{{ malware.id }}</a></td>
+					    <td>{{ malware.file_name }}</td>
+					    <td class="hide-small show-medium show-large">{{ malware.sha256 }}</td>
+					    <td>{{ malware.file_size|filesizeformat }}</td>
+					</tr>        				
+    				    {% endfor %}
+				</tbody>                                  
+			{% else %}
+                        	<tfoot>
+	                        	<td colspan="4">NO MALWARE FOUND!</td>
+                       		</tfoot>                                  
+			{% endif %}
+                    </table>
+        </div>
+    </body>
+</html>
